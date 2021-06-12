@@ -1,0 +1,28 @@
+{
+  "name": "tagchecker",
+  "version": "1.0.0",
+  "description": "Tech test for Spoke Phone",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catluin/TagChecker.git"
+  },
+  "author": "Kira Dergacheva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catluin/TagChecker/issues"
+  },
+  "homepage": "https://github.com/catluin/TagChecker#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "jest": "27.0.4"
+  },
+  "jest": {
+    "verbose": true,
+    "testMatch": ["<rootDir>/src/__tests__/**/*.test.js"]
+  }
+}
