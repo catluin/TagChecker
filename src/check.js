@@ -4,7 +4,7 @@ function findTags(input) {
 }
 
 function checkTagsErrors(tags) {
-    const stack = ['#'];
+    const stack = [null];
     let result = null;
 
     tags.every(tag => {
@@ -20,15 +20,15 @@ function checkTagsErrors(tags) {
             return true;
         }
 
-        result = 'Expected ' + previousExpectedTag + ' found ' + tag;
+        result = { expected: previousExpectedTag, found: tag };
         return false;
     });
 
     if (!result && stack.length > 1) {
         const lastTag = stack.pop();
-        result = 'Expected ' + lastTag + ' found #';
+        result = { expected: lastTag, found: null };
     }
-    return result || 'Correctly tagged paragraph';
+    return result;
 };
 
 module.exports = { findTags, checkTagsErrors };

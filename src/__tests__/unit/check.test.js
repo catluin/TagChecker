@@ -1,9 +1,9 @@
-const checker = require('../check.js');
+const checker = require('../../check.js');
 
 describe('check.js', () => {
     describe('should return an array of tags', () => {
         it('no tags', () => {
-            expect(checker.findTags('')).toEqual([]);
+            expect(checker.findTags('no tags')).toEqual([]);
         });
 
         it('one tag', () => {
@@ -27,21 +27,21 @@ describe('check.js', () => {
         });
     });
 
-    describe('constructing stack', () => {
+    describe('should check tag errors', () => {
         it('correct tags', () => {
-            expect(checker.checkTagsErrors(['<C>', '<B>', '</B>', '</C>'])).toEqual('Correctly tagged paragraph');
+            expect(checker.checkTagsErrors(['<C>', '<B>', '</B>', '</C>'])).toBeNull();
         });
 
         it('mixed tags', () => {
-            expect(checker.checkTagsErrors(['<C>', '</B>', '</C>', '</B>'])).toEqual('Expected </C> found </B>');
+            expect(checker.checkTagsErrors(['<C>', '</B>', '</C>', '</B>'])).toEqual({expected: '</C>', found: '</B>'});
         });
 
         it('extra closing tag', () => {
-            expect(checker.checkTagsErrors(['<B>', '</B>', '</C>'])).toEqual('Expected # found </C>');
+            expect(checker.checkTagsErrors(['<B>', '</B>', '</C>'])).toEqual({expected: null, found: '</C>'});
         });
 
         it('missing closing tag', () => {
-            expect(checker.checkTagsErrors(['<B>', '<C>', '</C>'])).toEqual('Expected </B> found #');
+            expect(checker.checkTagsErrors(['<B>', '<C>', '</C>'])).toEqual({expected: '</B>', found: null});
         });
     });
 });
