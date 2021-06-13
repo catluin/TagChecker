@@ -4,7 +4,8 @@
   "description": "Tech test for Spoke Phone",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest unit",
+    "e2e": "jest end-to-end",
     "start": "node ./src/index.js"
   },
   "repository": {

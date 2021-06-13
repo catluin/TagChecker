@@ -1,19 +1,8 @@
 const concat = require('concat-stream');
 const spawn = require('child_process').spawn;
 
-function createProcess(processPath) {
-    args = [processPath];
-
-    return spawn('node', args, {
-        env:
-        {
-            NODE_ENV: 'test'
-        }
-    });
-}
-
 function execute(processPath, input) {
-    const childProcess = createProcess(processPath);
+    const childProcess = spawn('node', [processPath], { env: { NODE_ENV: 'test' } });;
     childProcess.stdin.setEncoding('utf-8');
 
     childProcess.stdin.write(input + '\n');

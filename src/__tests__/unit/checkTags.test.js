@@ -1,4 +1,4 @@
-const checker = require('../../check.js');
+const checker = require('../../checkTags.js');
 
 describe('check.js', () => {
     describe('should return an array of tags', () => {

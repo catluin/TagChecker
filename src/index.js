@@ -1,5 +1,5 @@
 const input = require('./input');
-const checker = require('./check');
+const checker = require('./checkTags');
 const output = require('./output');
 
 input.readValue(value => {
